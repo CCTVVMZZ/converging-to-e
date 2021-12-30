@@ -1,0 +1,219 @@
+% -*- mode: latex; eval: (flyspell-mode 1); ispell-local-dictionary: "american"; TeX-master: t; -*-
+
+\documentclass[12pt]{article}
+
+
+
+\usepackage{hyperref,amsthm,amsmath,amsfonts,enumerate,stmaryrd}
+
+\newcommand{\bN}{\mathbb{N}} %{\bZ_{\ge 0}}
+\newcommand{\Rnneg}{\left[0, \infty\right[} %{\bR_{\ge 0}}
+\newcommand{\Rpos}{\left]0, \infty\right[} %{\bR_{\ge 0}}
+\newcommand{\Rneg}{\left]- \infty, 0 \right[} %{\bR_{\ge 0}}
+\newcommand{\Rnpos}{\left]- \infty, 0 \right]} %{\bR_{\ge 0}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\sloppy
+
+\title{On the behavior of $n \mathbin{/} \sqrt[n]{n!}$ as $n$ approaches infinity} 
+\author{Charlot Colmes}
+\maketitle
+
+Let $\bN$ denote set of all \emph{positive} integers and
+let Euler's number be defined as:
+$$
+e = \sum_{k = 0}^\infty \frac{1}{k!} \,. 
+$$
+The aim of this paper is to present a simple proof for the following theorem:
+
+\begin{theorem} \label{thm:factnn-e}
+If
+$$
+u_n = \frac{n}{\sqrt[n]{n!}}
+$$
+for every $n \in \bN$ then
+the sequence $\left( u_n  \right)_{n \in \bN}$ is increasing and converges to~$e$.
+\end{theorem}
+
+The convergence to $e$ can easily be deduced from \emph{Stirling's formula}
+\cite{GiaquintaModicaApprox, RudinPrinciples}
+but using such a tool is clearly an overkill.
+Our proof of Theorem~\ref{thm:factnn-e} is self-contained.
+
+As an introduction for our first lemma,
+recall that for every $\left( u_n \right)_{n \in \bN} \in \Rpos^\bN$, we have 
+$$
+\liminf_{n \to \infty} \frac{u_{n + 1}^{n + 1}}{ u_n^{n}} 
+\le
+\liminf_{n \to \infty} u_n 
+\le
+\limsup_{n \to \infty} u_n
+\le 
+\limsup_{n \to \infty} \frac{u_{n + 1}^{n + 1}}{u_n^{n}} 
+$$
+\cite{RudinPrinciples},
+so if $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ converges then
+$\left( u_n \right)_{n \in \bN}$ converges to the same limit.
+In particular, every series that passes the \emph{ratio test} also passes the \emph{root test}.
+The latter results are closely related to:
+
+\begin{lemma} \label{lem:root-vs-ratio}
+  Let $\left( u_n \right)_{n \in \bN}  \in \Rpos^{\bN}$ be such that
+  $u_1 < u_2$ and  
+  $\left(  u_{n + 1}^{n + 1}  u_n^{-n} \right)_{n \in \bN}$ is monotonically increasing.
+  Then,
+  $\left(u_n \right)_{n \in \bN}$ is increasing and
+  converges to the same limit as $\left(  u_{n + 1}^{n + 1}  u_n^{-n} \right)_{n \in \bN}$.
+\end{lemma}
+
+\begin{proof}
+ Put
+  $v_n = u_{n + 1} u_n^{-1}$
+  and
+  $w_n = u_{n + 1}^{n + 1} u_n^{- n}$
+  for every $n \in \bN$.
+  
+  Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
+  More precisely, let us prove by induction on $n$ that $v_n$ is greater than $1$ for every $n \in \bN$.
+  Since $v_1$ is greater than $1$ by assumption,
+  the basis of our induction holds true.
+  Now, let $n \in \bN$. %be such that $v_n > 1$.
+  Straightforward computations yield
+  \begin{equation} \label{eq:wn-uv}
+    w_n = u_{n + 1}v_n^n \,, 
+  \end{equation} 
+  and subsequently, 
+  $w_{n + 1} = u_{n + 1} v_{n + 1}^{n + 2}$.
+  It follows  
+  $v_{n + 1}^{n + 2}= w_{n + 1}w_n^{-1} v_n^n \ge v_n^n$,
+  and thus $v_n > 1$ implies $v_{n + 1} > 1$, as desired.
+
+  It remains to prove $\bar u = \bar w$, where 
+  $\bar u = \lim_{n \to \infty} u_n$ and 
+  $\bar w = \lim_{n \to \infty} w_n$.
+  Let $n \in \bN$.
+  Since $v_n > 1$,
+  Equation~\eqref{eq:wn-uv} yields $w_n > u_{n + 1}$,
+  and thus we obtain $\bar w \ge \bar u$ by letting $n$ approach~$\infty$.
+  In particular, $\bar u = \infty$ implies $\bar w = \infty$.
+  Hence, the final step is to prove $\bar u \ge \bar w$ under the assumption $\bar u \ne \infty$.
+  Equality 
+  $$
+  \frac{u_{2n}^{2n}}{ u_n^n} =  \prod_{k = n}^{2n - 1} w_k
+  $$
+  holds true because the latter product is telescoping.
+  Moreover, each factor $w_k$ of that product is larger than or equal to $w_n$.
+  It follows 
+  $u_{2n}^{2n} u_n^{-n} \ge w_n^n$, 
+  or equivalently,
+  $u_{2n}^2u_n^{- 1}  \ge  w_n$.
+  Since $\bar u \ne \infty$, 
+  $u_{2n}^2 u_n^{-1}$ approaches $\bar u$ as $n$ approaches $\infty$.
+  It follows $\bar u \ge \bar w$, as desired.
+\end{proof}
+
+As an aside, let us check that the converse of Lemma~\ref{lem:root-vs-ratio} is false.
+Set $ u_n = \exp \left( - n^{- 2} \right)$ for each $n \in \bN$.
+Clearly,  $\left( u_n \right)_{n \in \bN}$  is increasing whereas
+$\left(  u_{n + 1}^{n + 1}  u_n^{-n} \right)_{n \in \bN}$ is decreasing because 
+$$
+\frac{u_{n + 1}^{n + 1}}{u_n^n} = \exp \left(\frac{1}{n (n + 1)} \right) 
+$$
+for every $n \in \bN$.
+
+
+
+\begin{lemma} \label{lem:convergence-to-e}
+  If
+  $$
+  u_n = \left( 1 + \frac{1}{n} \right)^n
+  $$
+  for every $n \in \bN$ then the sequence $\left( u_n  \right)_{n \in \bN}$ is increasing and converges to~$e$.
+\end{lemma}
+
+\begin{proof}
+  Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
+  Let $n \in \bN$ and let $x \in \left[- 1, 1 \right[$.
+  Since $x^k$ is not greater than $1$ for every $k \in \bN$,
+  we have     
+  $$
+  \frac{1 - x^{n + 1}}{1 - x} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
+  $$
+  and consequently, 
+  \begin{equation} \label{eq:Bernoulli}
+  x^{n + 1} > 1 + (n + 1)(x - 1) \,.
+  \end{equation}
+  Now, set
+  $$
+  x = \frac{1 + {(n + 1)}^{-1}} {1 + n^{-1}} \,, 
+  $$
+  and then multiply Equation~\eqref{eq:Bernoulli} by $1 + n^{-1}$ on both sides.
+  We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
+  
+  It remains to prove $\bar u = e$, where $\bar u = \lim_{n \to \infty} u_n$.
+  Put
+  $$
+  v_n = \sum_{k = 0}^n \frac{1}{k!} 
+  $$
+  for each $n \in \bN$.
+  Let $m$, $n \in \bN$ be such that $m \le n$.
+  The binomial theorem yields
+  $$
+  u_n
+  = \sum_{k = 0}^n  \binom{n}{k} \frac{1}{n^k}
+  = \sum_{k = 0}^n \frac{1}{k!} \cdot \frac{n!}{n^k {(n - k)}!} \, .
+  $$
+  Besides, $n!$ is less than or equal to $n^k {(n - k)}!$ for each $k \in \{ 0, 1, 2, \dotsc, n \}$.
+  It follows $ u_n \le v_n$,  and consequently, $\bar u \le e$.
+  The final step is to prove the other inequality.
+ For each fixed $k \in \{ 0, 1, 2, \dotsc, n \}$, 
+  $$
+  \frac{n!}{{(n - k)}! n^k} = \prod_{j = 0}^{k - 1} \left( 1 - \frac{j}{n} \right) 
+ $$
+ approaches $1$ as $n$ approaches~$\infty$.
+ Therefore, by letting $m$ be fixed and $n$ approach $\infty$ in 
+ $$
+  \sum_{k = 0}^m \frac{1}{k!} \cdot \frac{n!}{n^k {(n - k)}!} \le u_n \,, 
+  $$
+  we obtain $v_m \le \bar u$, and consequently, $e \le \bar u$.
+\end{proof}
+
+
+Let us briefly comment the proof of Lemma~\ref{lem:convergence-to-e}.
+Our proof of the fact that $\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$
+is increasing is taken from \cite{Wiener85}.
+Another approach \cite{GiaquintaModicaApprox} is to closely examine the right-hand side of equality 
+$$ 
+\left(1 + \frac{1}{n} \right)^n = \sum_{k = 0}^n \frac{1}{k!} \prod_{j = 0}^{k - 1} \left(1 - \frac{j}{n} \right) 
+$$
+which holds true for every $n \in \bN$.
+Equation~\eqref{eq:Bernoulli} is usually called \emph{Bernoulli's inequality};
+it holds true for every $n \in \bN$ and every
+$x \in \left[- 1, 1 \right[ \cup \left]1, \infty \right[$ \cite{MitrinovicAI}.
+Our proof of the fact that
+$\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$ converges to $e$ is taken from \cite{RudinPrinciples}.
+
+
+\begin{proof}[Proof of Theorem~\ref{thm:factnn-e}]
+  Straightforward computations yield
+  $$
+  \frac{u_{n + 1}^{n + 1}}{u_n^n} 
+  = \left(1 + \frac{1}{n} \right)^n  
+  $$
+  for every $n \in \bN$,
+  so Lemma~\ref{lem:convergence-to-e} ensures that 
+  $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ is (monotonically) increasing and converges to~$e$.
+  Besides, we have $u_1 = 1 < \sqrt{2} = u_2$.
+  Therefore, the desired result follows from Lemma~\ref{lem:root-vs-ratio}.
+\end{proof} 
+
+\bibliographystyle{plain}
+\bibliography{converge}
+
+\end{document}
+  
+  
