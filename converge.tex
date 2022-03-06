@@ -127,19 +127,12 @@ $$
 $$
 for every $n \in \bN$.
 
-\begin{lemma}
+\begin{lemma} \label{lem:Bernoulli}
   Inequality 
   \begin{equation} \label{eq:Bernoulli}
-    \prod_{n = 1}^\infty  (1 - x_n)  \ge 1  + x_1 x_2 - \sum_{n = 0}^\infty x_n 
+    \prod_{n = 1}^\infty  (1 - x_n) \ge 1 + x_1 x_2 - \sum_{n = 0}^\infty x_n 
   \end{equation}
   holds true for every $\left( x_n \right)_{n \in \bN} \in {[0, 1]}^\bN$.
- % holds true if, and only if, there exist $i$, $j \in \bN$ such that $i \ne j$ and $x_i x_j \ne 0$.
-  % For each $\left( x_n \right)_{n \in \bN} \in {[0, 1]}^\bN$,
-  % inequality 
-  % \begin{equation} \label{eq:Bernoulli}
-  %   \prod_{n = 1}^\infty  (1 - x_n)  > 1  + x_1 x_2 - \sum_{n = 0}^\infty x_n 
-  % \end{equation} 
-  % holds true if, and only if, there exist $i$, $j \in \bN$ such that $i \ne j$ and $x_i x_j \ne 0$.
 \end{lemma} 
 
 \begin{proof}
@@ -167,9 +160,10 @@ for every $n \in \bN$.
     & \ge 0   \,,  
   \end{align*}
   so the sequence $\left( d_n  \right)_{n \in \bN}$ is monotonically increasing and converges to $d_\infty$.
-  Hence, we have $d_\infty \ge d_2 =  1 + x_1 x_2$, as desired.  
+  Hence, we have $d_\infty \ge d_2 =  1 + x_1 x_2$, as desired.
 \end{proof}
 
+Lemma~\ref{lem:Bernoulli} is related to \emph{Bernoulli's inequality} \cite{MitrinovicAI}.
 
 \begin{lemma} \label{lem:convergence-to-e}
   If
@@ -182,6 +176,19 @@ for every $n \in \bN$.
 \begin{proof}
   Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
   Let $n \in \bN$.
+  $$
+  u_{n + 1} = \left( \frac{n + 2}{n + 1} \right)^{n + 1}
+  $$
+   $$
+   u_n = \left( \frac{n + 1}{n} \right)^{n + 1} \frac{n}{n + 1} 
+   $$
+   $$
+   \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} = 1 - \frac{1}{{(n + 1)}^2} 
+  $$
+   $$
+   \frac{u_{n + 1}}{u_n}
+   = \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1} \frac{n + 1}{n}
+   $$
   
   and let $x \in \left[- 1, 1 \right[$.
   % Since $x^k \le 1$  for every $k \in \bN$,
@@ -237,9 +244,9 @@ $$
 \left(1 + \frac{1}{n} \right)^n = \sum_{k = 0}^n \frac{1}{k!} \prod_{j = 0}^{k - 1} \left(1 - \frac{j}{n} \right) 
 $$
 which holds true for every $n \in \bN$.
-Equation~\eqref{eq:Bernoulli} is usually called \emph{Bernoulli's inequality};
-it holds true for every $n \in \bN$ and every
-$x \in \left[- 1, 1 \right[ \cup \left]1, \infty \right[$ \cite{MitrinovicAI}.
+% Equation~\eqref{eq:Bernoulli} is usually called \emph{Bernoulli's inequality};
+% it holds true for every $n \in \bN$ and every
+% $x \in \left[- 1, 1 \right[ \cup \left]1, \infty \right[$ 
 Our proof of the fact that
 $\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$ converges to $e$ is taken from \cite{RudinPrinciples}.
 
