@@ -11,6 +11,7 @@
 \newcommand{\Rpos}{\left]0, \infty\right[} %{\bR_{\ge 0}}
 \newcommand{\Rneg}{\left]- \infty, 0 \right[} %{\bR_{\ge 0}}
 \newcommand{\Rnpos}{\left]- \infty, 0 \right]} %{\bR_{\ge 0}}
+\newcommand{\abs}[1]{\left| #1 \right|}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -43,6 +44,7 @@ The convergence to $e$ can easily be deduced from \emph{Stirling's formula}
 \cite{GiaquintaModicaApprox, RudinPrinciples}
 but using such a tool is clearly an overkill.
 Our proof of Theorem~\ref{thm:factnn-e} is self-contained.
+In particular, it does not rely on any differential or integral calculus.
 
 As an introduction for our first lemma,
 recall that for every $\left( u_n \right)_{n \in \bN} \in \Rpos^\bN$, we have 
@@ -108,10 +110,10 @@ The latter results are closely related to:
   holds true because the latter product is telescoping.
   Moreover, each factor $w_k$ of that product is larger than or equal to $w_n$.
   It follows 
-  $u_{2n}^{2n} u_n^{-n} \ge w_n^n$, 
-  or equivalently,
+  $u_{2n}^{2n} u_n^{-n} \ge w_n^n$ 
+  or, equivalently,
   $u_{2n}^2u_n^{- 1}  \ge  w_n$.
-  Since $\bar u \ne \infty$, 
+  Since $\bar u \notin \{ 0, \infty \}$, 
   $u_{2n}^2 u_n^{-1}$ approaches $\bar u$ as $n$ approaches $\infty$.
   It follows $\bar u \ge \bar w$, as desired.
 \end{proof}
@@ -125,6 +127,54 @@ $$
 $$
 for every $n \in \bN$.
 
+\begin{lemma}
+  Let $n \in \bN$.
+  Inequality 
+  $$
+  \prod_{i = 1}^n (1 - x_i) > 1 - \sum_{i = 1}^n x_i 
+  $$
+  holds true for all  $x_1$, $x_2$, \dots, $x_n \in \left]0, 1\right[$. 
+  % Inequality ${(1 + x)}^n > 1 + n x$ holds true
+  % for every integer $n \ge 2$ and every $x \in \left]- 2, 0 \right[ \cup \left]0, \infty \right[$.
+\end{lemma} 
+
+\begin{proof}
+  % Let $x \in \left]- 2, 0 \right[ \cup \left]0, \infty \right[$ be fixed.
+  % Put 
+  % \begin{equation} \label{eq:def-fn}
+  % f_n(x) = {(1 + x)}^n - 1 - n x 
+  % \end{equation} 
+  % for each $n \in \bN$.
+  % Let us first assume $- 1 \le x$ .
+  % Since 
+  % $$
+  % f_n(x) (1 + x) + = f_{n + 1}(x) + n^2 
+  % $$
+  In the case where $x \in \left[- 1, 0 \right[ \cup \left]0, \infty \right[$, 
+  we have 
+  $$
+  (1 + n x) (1 + x)
+  = 1 + (n + 1) x + n x^2
+  > 1 + (n + 1) x 
+  $$
+  for every $n \in \bN$, 
+  so the desired inequality follows from a straightforward induction on~$n$.
+  In the case where $x \in [-2, -1]$,
+  we have 
+  $$
+  {(1 + x)}^n \ge - \abs{1 + x}^n \ge - \abs{1 + x} = 1 + x > 1 + n x \, .
+  $$
+  % Let $k$ be a non-negative integer such that $k x > 2 k + 1$ and ${(1 + x)}^k \ge 1 + k x$.
+  % Straightforward computations yield 
+  % \begin{align*}
+  %   {(1 + x)}^{k + 2}  & = {(1 + x)}^k {(1 + x)}^2 \\
+  %      & \ge (1 + k x){(1 + x)}^2 \\
+  %                      & = 1 + (k + 2) x + x^2 (2 k + 1 - k x) \\
+  % \end{align*}
+  % Besides, inequality ${( 1 + x)}^k \ge 1 + k x$ clearly holds true for each $k \in \{ 0, 1 \}$.
+  % Therefore, a simple induction on $k$ shows that for every integer $k \ge 0$ 
+  % and thus a simple induction on $n$ 
+\end{proof}
 
 
 \begin{lemma} \label{lem:convergence-to-e}
@@ -138,13 +188,13 @@ for every $n \in \bN$.
 \begin{proof}
   Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
   Let $n \in \bN$ and let $x \in \left[- 1, 1 \right[$.
-  Since $x^k$ is not greater than $1$ for every $k \in \bN$,
+  Since $x^k \le 1$  for every $k \in \bN$,
   we have     
   $$
-  \frac{1 - x^{n + 1}}{1 - x} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
+  \frac{x^{n + 1} - 1}{x - 1} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
   $$
   and consequently, 
-  \begin{equation} \label{eq:Bernoulli}
+  \begin{equation} 
   x^{n + 1} > 1 + (n + 1)(x - 1) \,.
   \end{equation}
   Now, set
