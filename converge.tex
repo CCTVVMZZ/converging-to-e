@@ -128,42 +128,27 @@ $$
 for every $n \in \bN$.
 
 \begin{lemma} \label{lem:Bernoulli}
-  Inequality 
-  \begin{equation} \label{eq:Bernoulli}
-    \prod_{n = 1}^\infty  (1 - x_n) \ge 1 + x_1 x_2 - \sum_{n = 0}^\infty x_n 
-  \end{equation}
-  holds true for every $\left( x_n \right)_{n \in \bN} \in {[0, 1]}^\bN$.
+  Inequality ${(1 - x)}^n > 1 - n x $
+  holds true for every $x \in \left]0, 1 \right]$ and every integer $n \ge 2$.
 \end{lemma} 
 
 \begin{proof}
   Put
-  \begin{align*}
-  s_n  & = \sum_{k = 1}^n x_k \,, \\
-  p_n &  = \prod_{k = 1}^n (1 - x_k) \,, 
-  \end{align*}
-  and $d_n = s_n + p_n$ for each $n \in \bN \cup \{ \infty \}$.
-  Since
-  $s_{n + 1} - s_n = x_{n + 1} \ge 0$
-  for every $n \in \bN$,
-  the sequence $\left( s_n \right)_{n \in \bN}$ is monotonically increasing and converges to $s_\infty$;
-  since
-  $p_n - p_{n + 1} =  p_n x_{n + 1} \ge 0$
-  for every $n \in \bN$, 
-  the sequence $\left( p_n \right)_{n \in \bN}$ is monotonically decreasing and converges to $p_\infty$.
-  For each $n \in \bN$,
-  straightforward computations yield
-  \begin{align*}
-    d_{n + 1} - d_n 
-  & = (s_{n + 1} - s_n) - (p_n - p_{n + 1}) \\
-  & = x_{n + 1} - p_n x_{n + 1}  \\
-    & =  (1 - p_n) x_{n + 1} \\
-    & \ge 0   \,,  
-  \end{align*}
-  so the sequence $\left( d_n  \right)_{n \in \bN}$ is monotonically increasing and converges to $d_\infty$.
-  Hence, we have $d_\infty \ge d_2 =  1 + x_1 x_2$, as desired.
-\end{proof}
+  $$
+  u _n =  \left( 1 - x \right)^n + n x  
+  $$
+  for each $n \in \bN$.
+  Straightforward computations yield
+  $$
+  u_{n + 1} - u_n = \left(1 - {(1 - x)}^n \right) x > 0
+  $$
+  for every $n \in \bN$, so the sequence $\left( u_n \right)_{n \in \bN}$ is increasing.
+  It follows $u_n > u_1 = 1$ for every $n \in \bN \setminus \{ 1 \}$,
+  whence the desired  inequality holds true.  
+\end{proof} 
 
-Lemma~\ref{lem:Bernoulli} is related to \emph{Bernoulli's inequality} \cite{MitrinovicAI}.
+
+Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality} \cite{MitrinovicAI}.
 
 \begin{lemma} \label{lem:convergence-to-e}
   If
@@ -176,36 +161,31 @@ Lemma~\ref{lem:Bernoulli} is related to \emph{Bernoulli's inequality} \cite{Mitr
 \begin{proof}
   Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
   Let $n \in \bN$.
-  $$
-  u_{n + 1} = \left( \frac{n + 2}{n + 1} \right)^{n + 1}
-  $$
-   $$
-   u_n = \left( \frac{n + 1}{n} \right)^{n + 1} \frac{n}{n + 1} 
-   $$
-   $$
-   \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} = 1 - \frac{1}{{(n + 1)}^2} 
-  $$
-   $$
+  Straightforward computations yield 
+  \begin{gather*}
+    u_{n + 1}
+    =  \left( \frac{n + 2}{n + 1} \right)^{n + 1} \,, \\
+    \frac{1}{u_n}
+    = \left( \frac{n}{n + 1} \right)^{n + 1} \frac{n + 1}{n}\,, \\
+    \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1}
+     = 1 - \frac{1}{{(n + 1)}^2} \,, 
+   \intertext{and consequently, } 
    \frac{u_{n + 1}}{u_n}
-   = \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1} \frac{n + 1}{n}
+   %= u_{n + 1} \cdot \frac{1}{u_n} 
+   =  \left(
+         \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1}
+     \right)^{n + 1}  \frac{n + 1}{n} 
+   =\left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1}  \frac{n + 1}{n} \, . 
+  \end{gather*}
+   Besides, Lemma~\ref{lem:Bernoulli} ensures
    $$
-  
-  and let $x \in \left[- 1, 1 \right[$.
-  % Since $x^k \le 1$  for every $k \in \bN$,
-  % we have     
-  % $$
-  % \frac{x^{n + 1} - 1}{x - 1} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
-  % $$
-  % and consequently, 
-  % \begin{equation} 
-  % x^{n + 1} > 1 + (n + 1)(x - 1) \,.
-  % \end{equation}
-  % Now, set
-  % $$
-  % x = \frac{1 + {(n + 1)}^{-1}} {1 + n^{-1}} \,, 
-  % $$
-  % and then multiply Equation~\eqref{eq:Bernoulli} by $1 + n^{-1}$ on both sides.
-  % We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
+ \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1}   >  1 - \frac{1}{n + 1} \, . 
+ $$
+ It follows
+ $$
+ \frac{u_{n + 1}} {u_n} >  \left( 1 - \frac{1}{n + 1} \right) \frac{n + 1}{n}  = 1 
+ $$
+   We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
   
   It remains to prove $\bar u = e$, where $\bar u = \lim_{n \to \infty} u_n$.
   Put
