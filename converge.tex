@@ -128,52 +128,46 @@ $$
 for every $n \in \bN$.
 
 \begin{lemma}
-  Let $n \in \bN$.
   Inequality 
-  $$
-  \prod_{i = 1}^n (1 - x_i) > 1 - \sum_{i = 1}^n x_i 
-  $$
-  holds true for all  $x_1$, $x_2$, \dots, $x_n \in \left]0, 1\right[$. 
-  % Inequality ${(1 + x)}^n > 1 + n x$ holds true
-  % for every integer $n \ge 2$ and every $x \in \left]- 2, 0 \right[ \cup \left]0, \infty \right[$.
+  \begin{equation} \label{eq:Bernoulli}
+    \prod_{n = 1}^\infty  (1 - x_n)  \ge 1  + x_1 x_2 - \sum_{n = 0}^\infty x_n 
+  \end{equation}
+  holds true for every $\left( x_n \right)_{n \in \bN} \in {[0, 1]}^\bN$.
+ % holds true if, and only if, there exist $i$, $j \in \bN$ such that $i \ne j$ and $x_i x_j \ne 0$.
+  % For each $\left( x_n \right)_{n \in \bN} \in {[0, 1]}^\bN$,
+  % inequality 
+  % \begin{equation} \label{eq:Bernoulli}
+  %   \prod_{n = 1}^\infty  (1 - x_n)  > 1  + x_1 x_2 - \sum_{n = 0}^\infty x_n 
+  % \end{equation} 
+  % holds true if, and only if, there exist $i$, $j \in \bN$ such that $i \ne j$ and $x_i x_j \ne 0$.
 \end{lemma} 
 
 \begin{proof}
-  % Let $x \in \left]- 2, 0 \right[ \cup \left]0, \infty \right[$ be fixed.
-  % Put 
-  % \begin{equation} \label{eq:def-fn}
-  % f_n(x) = {(1 + x)}^n - 1 - n x 
-  % \end{equation} 
-  % for each $n \in \bN$.
-  % Let us first assume $- 1 \le x$ .
-  % Since 
-  % $$
-  % f_n(x) (1 + x) + = f_{n + 1}(x) + n^2 
-  % $$
-  In the case where $x \in \left[- 1, 0 \right[ \cup \left]0, \infty \right[$, 
-  we have 
-  $$
-  (1 + n x) (1 + x)
-  = 1 + (n + 1) x + n x^2
-  > 1 + (n + 1) x 
-  $$
+  Put
+  \begin{align*}
+  s_n  & = \sum_{k = 1}^n x_k \,, \\
+  p_n &  = \prod_{k = 1}^n (1 - x_k) \,, 
+  \end{align*}
+  and $d_n = s_n + p_n$ for each $n \in \bN \cup \{ \infty \}$.
+  Since
+  $s_{n + 1} - s_n = x_{n + 1} \ge 0$
+  for every $n \in \bN$,
+  the sequence $\left( s_n \right)_{n \in \bN}$ is monotonically increasing and converges to $s_\infty$;
+  since
+  $p_n - p_{n + 1} =  p_n x_{n + 1} \ge 0$
   for every $n \in \bN$, 
-  so the desired inequality follows from a straightforward induction on~$n$.
-  In the case where $x \in [-2, -1]$,
-  we have 
-  $$
-  {(1 + x)}^n \ge - \abs{1 + x}^n \ge - \abs{1 + x} = 1 + x > 1 + n x \, .
-  $$
-  % Let $k$ be a non-negative integer such that $k x > 2 k + 1$ and ${(1 + x)}^k \ge 1 + k x$.
-  % Straightforward computations yield 
-  % \begin{align*}
-  %   {(1 + x)}^{k + 2}  & = {(1 + x)}^k {(1 + x)}^2 \\
-  %      & \ge (1 + k x){(1 + x)}^2 \\
-  %                      & = 1 + (k + 2) x + x^2 (2 k + 1 - k x) \\
-  % \end{align*}
-  % Besides, inequality ${( 1 + x)}^k \ge 1 + k x$ clearly holds true for each $k \in \{ 0, 1 \}$.
-  % Therefore, a simple induction on $k$ shows that for every integer $k \ge 0$ 
-  % and thus a simple induction on $n$ 
+  the sequence $\left( p_n \right)_{n \in \bN}$ is monotonically decreasing and converges to $p_\infty$.
+  For each $n \in \bN$,
+  straightforward computations yield
+  \begin{align*}
+    d_{n + 1} - d_n 
+  & = (s_{n + 1} - s_n) - (p_n - p_{n + 1}) \\
+  & = x_{n + 1} - p_n x_{n + 1}  \\
+    & =  (1 - p_n) x_{n + 1} \\
+    & \ge 0   \,,  
+  \end{align*}
+  so the sequence $\left( d_n  \right)_{n \in \bN}$ is monotonically increasing and converges to $d_\infty$.
+  Hence, we have $d_\infty \ge d_2 =  1 + x_1 x_2$, as desired.  
 \end{proof}
 
 
@@ -187,22 +181,24 @@ for every $n \in \bN$.
 
 \begin{proof}
   Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
-  Let $n \in \bN$ and let $x \in \left[- 1, 1 \right[$.
-  Since $x^k \le 1$  for every $k \in \bN$,
-  we have     
-  $$
-  \frac{x^{n + 1} - 1}{x - 1} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
-  $$
-  and consequently, 
-  \begin{equation} 
-  x^{n + 1} > 1 + (n + 1)(x - 1) \,.
-  \end{equation}
-  Now, set
-  $$
-  x = \frac{1 + {(n + 1)}^{-1}} {1 + n^{-1}} \,, 
-  $$
-  and then multiply Equation~\eqref{eq:Bernoulli} by $1 + n^{-1}$ on both sides.
-  We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
+  Let $n \in \bN$.
+  
+  and let $x \in \left[- 1, 1 \right[$.
+  % Since $x^k \le 1$  for every $k \in \bN$,
+  % we have     
+  % $$
+  % \frac{x^{n + 1} - 1}{x - 1} = \sum_{k = 0}^n x^k \le n + x < n + 1 \,, 
+  % $$
+  % and consequently, 
+  % \begin{equation} 
+  % x^{n + 1} > 1 + (n + 1)(x - 1) \,.
+  % \end{equation}
+  % Now, set
+  % $$
+  % x = \frac{1 + {(n + 1)}^{-1}} {1 + n^{-1}} \,, 
+  % $$
+  % and then multiply Equation~\eqref{eq:Bernoulli} by $1 + n^{-1}$ on both sides.
+  % We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
   
   It remains to prove $\bar u = e$, where $\bar u = \lim_{n \to \infty} u_n$.
   Put
