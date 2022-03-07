@@ -152,21 +152,6 @@ for every $n \in \bN$.
 \end{proof}
 
 
-\begin{proof}
-  Put
-  $$
-  u _n =  \left( 1 - x \right)^n + n x  
-  $$
-  for each $n \in \bN$.
-  Straightforward computations yield
-  $$
-  u_{n + 1} - u_n = \left(1 - {(1 - x)}^n \right) x > 0
-  $$
-  for every $n \in \bN$, so the sequence $\left( u_n \right)_{n \in \bN}$ is increasing.
-  It follows $u_n > u_1 = 1$ for every $n \in \bN \setminus \{ 1 \}$,
-  whence the desired  inequality holds true.  
-\end{proof} 
-
 
 Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality} \cite{MitrinovicAI}.
 
@@ -179,33 +164,49 @@ Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality}
 \end{lemma}
 
 \begin{proof}
-  Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
+  Let us first check that $\left( u_n \right)_{n \in \bN}$ is increasing.
   %For each $n \in \bN$, put  $v_n = 1 + n^{-1}$: $u_n = v_n^n$.
   %Put  $v_n = 1 + n^{-1}$ for each $n \in \bN$. 
   Let $n \in \bN$.
+  Our task is to prove $u_{n + 1} u_n^{-1} > 1$.
   Straightforward computations yield
   \begin{align*}
-    u_n & = \left( \frac{n + 1}{n}  \right)^n \,, \\
-          u_{n + 1} & = \frac{n + 2}{n + 1} \left( \frac{n + 2}{n + 1} \right)^n \,,
+    \frac{1}{u_n} & = \left( \frac{n}{n + 1}  \right)^n \,, \\
+    u_{n + 1} & = \left( \frac{n + 2}{n + 1} \right)^n
+                \frac{n + 2}{n + 1} \,,
   \end{align*}
   and 
   $$
-  \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} = 1 - \frac{1}{{(n + 1)}^2}  \,,
+  \frac{n}{n + 1}
+  \cdot 
+  \frac{n + 2}{n + 1}
+  = 1 - \frac{1}{{(n + 1)}^2}  \,,
    $$
   whence 
   $$
   \frac{u_{n + 1}}{u_n}
-  = \frac{n + 2}{n + 1} \left( \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} \right)^n
-  = \frac{n + 2}{n + 1} \left( 1 - \frac{1}{{(n + 1)}^2} \right)^n \, .
+  =
+  \frac{1}{u_n} \cdot u_{n + 1}  
+  =
+  \left(
+  \frac{n}{n + 1} \cdot \frac{n + 2}{n + 1}
+  \right)^n
+  \frac{n + 2}{n + 1}
+  =
+  \left( 1 - \frac{1}{{(n + 1)}^2} \right)^n 
+  \frac{n + 2}{n + 1}\, .
   $$
-  Besides, by letting $x = 1 - {(n + 1)}^{-2}$ in Lemma~\ref{lem:Bernoulli}, we obtain 
+  Besides, we get  
    $$
-   \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^n \ge  1 - \frac{n}{{(n + 1)}^2} \, . 
+   \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^n \ge  1 - \frac{n}{{(n + 1)}^2} 
  $$
+ by letting $x = {(n + 1)}^{-2}$ in Lemma~\ref{lem:Bernoulli}.
  It follows
  $$
  \frac{u_{n + 1}} {u_n}
- \ge \frac{n + 2}{n + 1}  \left( 1 - \frac{n}{{(n + 1)}^2} \right)
+ \ge
+ \left( 1 - \frac{n}{{(n + 1)}^2} \right)
+  \frac{n + 2}{n + 1}
  =
  1 + \frac{1}{{(n + 1)}^3}
  > 1 \,, 
@@ -230,7 +231,7 @@ Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality}
   The final step is to prove the other inequality.
  For each fixed $k \in \{ 0, 1, 2, \dotsc, n \}$, 
   $$
-  \frac{n!}{{(n - k)}! n^k} = \prod_{j = 0}^{k - 1} \left( 1 - \frac{j}{n} \right) 
+  \frac{n!}{{n^k (n - k)}!} = \prod_{j = 0}^{k - 1} \left( 1 - \frac{j}{n} \right) 
  $$
  approaches $1$ as $n$ approaches~$\infty$.
  Therefore, by letting $m$ be fixed and $n$ approach $\infty$ in 
@@ -264,7 +265,7 @@ $\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$ converges to $e$ is ta
   $$
   for every $n \in \bN$,
   so Lemma~\ref{lem:convergence-to-e} ensures that 
-  $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ is (monotonically) increasing and converges to~$e$.
+  $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ is increasing and converges to~$e$.
   Besides, we have $u_1 = 1 < \sqrt{2} = u_2$.
   Therefore, the desired result follows from Lemma~\ref{lem:root-vs-ratio}.
 \end{proof} 
