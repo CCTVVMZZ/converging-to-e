@@ -128,9 +128,29 @@ $$
 for every $n \in \bN$.
 
 \begin{lemma} \label{lem:Bernoulli}
-  Inequality ${(1 - x)}^n > 1 - n x $
-  holds true for every $x \in \left]0, 1 \right]$ and every integer $n \ge 2$.
+   Inequality ${(1 - x)}^n \ge  1 - n x$ 
+   holds true for every $x \in [0, 1]$ and every $n \in \bN$.
+   % Inequality ${(1 - x)}^n > 1 - n x $
+   % holds true for every $x \in \left]0, 1 \right]$ and every integer $n \ge 2$.
 \end{lemma} 
+
+\begin{proof}
+  Let $x \in [0, 1]$ be fixed.
+  Put
+  $$
+  u _n =  \left( 1 - x \right)^n + n x  
+  $$
+  for each $n \in \bN$.
+  Straightforward computations yield
+  $$
+  u_{n + 1} - u_n = \left(1 - {(1 - x)}^n \right) x \ge 0
+  $$
+  for every $n \in \bN$,
+  so the sequence $\left( u_n \right)_{n \in \bN}$ is monotonically increasing.
+  In particular, we have $u_n \ge u_1 = 1$ for every $n \in \bN$,
+  and thus the desired inequality holds true.  
+\end{proof}
+
 
 \begin{proof}
   Put
@@ -160,32 +180,37 @@ Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality}
 
 \begin{proof}
   Let us first prove that $\left( u_n \right)_{n \in \bN}$ is increasing.
+  %For each $n \in \bN$, put  $v_n = 1 + n^{-1}$: $u_n = v_n^n$.
+  %Put  $v_n = 1 + n^{-1}$ for each $n \in \bN$. 
   Let $n \in \bN$.
-  Straightforward computations yield 
-  \begin{gather*}
-    u_{n + 1}
-    =  \left( \frac{n + 2}{n + 1} \right)^{n + 1} \,, \\
-    \frac{1}{u_n}
-    = \left( \frac{n}{n + 1} \right)^{n + 1} \frac{n + 1}{n}\,, \\
-    \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1}
-     = 1 - \frac{1}{{(n + 1)}^2} \,, 
-   \intertext{and consequently, } 
-   \frac{u_{n + 1}}{u_n}
-   %= u_{n + 1} \cdot \frac{1}{u_n} 
-   =  \left(
-         \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1}
-     \right)^{n + 1}  \frac{n + 1}{n} 
-   =\left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1}  \frac{n + 1}{n} \, . 
-  \end{gather*}
-   Besides, Lemma~\ref{lem:Bernoulli} ensures
+  Straightforward computations yield
+  \begin{align*}
+    u_n & = \left( \frac{n + 1}{n}  \right)^n \,, \\
+          u_{n + 1} & = \frac{n + 2}{n + 1} \left( \frac{n + 2}{n + 1} \right)^n \,,
+  \end{align*}
+  and 
+  $$
+  \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} = 1 - \frac{1}{{(n + 1)}^2}  \,,
    $$
- \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^{n + 1}   >  1 - \frac{1}{n + 1} \, . 
+  whence 
+  $$
+  \frac{u_{n + 1}}{u_n}
+  = \frac{n + 2}{n + 1} \left( \frac{n + 2}{n + 1} \cdot \frac{n}{n + 1} \right)^n
+  = \frac{n + 2}{n + 1} \left( 1 - \frac{1}{{(n + 1)}^2} \right)^n \, .
+  $$
+  Besides, by letting $x = 1 - {(n + 1)}^{-2}$ in Lemma~\ref{lem:Bernoulli}, we obtain 
+   $$
+   \left( 1 - \frac{1}{{(n + 1)}^2}  \right)^n \ge  1 - \frac{n}{{(n + 1)}^2} \, . 
  $$
  It follows
  $$
- \frac{u_{n + 1}} {u_n} >  \left( 1 - \frac{1}{n + 1} \right) \frac{n + 1}{n}  = 1 
+ \frac{u_{n + 1}} {u_n}
+ \ge \frac{n + 2}{n + 1}  \left( 1 - \frac{n}{{(n + 1)}^2} \right)
+ =
+ 1 + \frac{1}{{(n + 1)}^3}
+ > 1 \,, 
  $$
-   We obtain $u_{n + 1} u_n^{-1} > 1$, as desired.
+ as desired.
   
   It remains to prove $\bar u = e$, where $\bar u = \lim_{n \to \infty} u_n$.
   Put
