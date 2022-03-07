@@ -43,8 +43,8 @@ the sequence $\left( u_n  \right)_{n \in \bN}$ is increasing and converges to~$e
 The convergence to $e$ can easily be deduced from \emph{Stirling's formula}
 \cite{GiaquintaModicaApprox, RudinPrinciples}
 but using such a tool is clearly an overkill.
-Our proof of Theorem~\ref{thm:factnn-e} is self-contained.
-In particular, it does not rely on any differential or integral calculus.
+Our proof of Theorem~\ref{thm:factnn-e} is self-contained and 
+does not rely on any differential or integral calculus.
 
 As an introduction for our first lemma,
 recall that for every $\left( u_n \right)_{n \in \bN} \in \Rpos^\bN$, we have 
@@ -113,7 +113,7 @@ The latter results are closely related to:
   $u_{2n}^{2n} u_n^{-n} \ge w_n^n$ 
   or, equivalently,
   $u_{2n}^2u_n^{- 1}  \ge  w_n$.
-  Since $\bar u \notin \{ 0, \infty \}$, 
+  Since $0 < \bar u < \infty$, 
   $u_{2n}^2 u_n^{-1}$ approaches $\bar u$ as $n$ approaches $\infty$.
   It follows $\bar u \ge \bar w$, as desired.
 \end{proof}
@@ -265,7 +265,7 @@ $\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$ converges to $e$ is ta
   $$
   for every $n \in \bN$,
   so Lemma~\ref{lem:convergence-to-e} ensures that 
-  $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ is increasing and converges to~$e$.
+  $\left( u_{n + 1}^{n + 1} u_n^{- n} \right)_{n \in \bN}$ is (monotonically) increasing and converges to~$e$.
   Besides, we have $u_1 = 1 < \sqrt{2} = u_2$.
   Therefore, the desired result follows from Lemma~\ref{lem:root-vs-ratio}.
 \end{proof} 
