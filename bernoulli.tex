@@ -1,0 +1,101 @@
+% -*- mode: latex; eval: (flyspell-mode 1); ispell-local-dictionary: "american"; TeX-master: "converge"; -*-
+
+\newcommand{\ttx}{\mathtt{x}}
+
+%As promised, let us return to Bernoulli's inequality.
+Let  $\ttx$ denote an indeterminate over the real numbers.
+Put
+$$
+f_n(\ttx) = {(1 + \ttx)}^n - 1 - n \ttx 
+$$
+for each $n \in \bN$.
+Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \in \bN$ and every $x \in [0, 1]$.
+% $$
+% t_3 =
+% - \frac{5}{3}
+% - \frac{\sqrt[3]{35 + 15 \sqrt{6}}}{3}
+% + \frac{5}{3 \sqrt[3]{35 + 15 \sqrt{6}}}
+% \approx -2.65062919143939
+% $$
+
+\begin{theorem} \label{thm:root-mult}
+  For each integer $n \ge 2$,
+  $0$ is a double root of $f_n$ and $0$ is the only non-simple (complex) root of $f_n$.
+\end{theorem}
+
+\begin{proof}
+  Straightforward computations yield
+  \begin{equation} \label{eq:deriv-fn} 
+  f_n'(\ttx)  = n \left( {(1 + \ttx)}^{n - 1} -  1 \right) 
+  \end{equation}
+  and
+  $$
+  f_n''(\ttx)  = n (n - 1) {(1 + \ttx)}^{n - 2} \,.
+  $$
+  It follows
+  $$
+  f_n(0) = f_n'(0) = 0 \ne n (n - 1) = f_n''(0) \, ,
+  $$
+  whence $0$ is a double root of $f_n$.
+  In addition, $f_n$ and its derivative satisfy 
+   $$
+   (1 + \ttx) f_n'(\ttx) - n f_n(\ttx) = n (n - 1) \ttx \, ,
+   $$
+   so for every complex number $z$, $f_n(z) = f_n'(z) = 0$ implies $z = 0$.
+   It follows that $0$ is the only non-simple root of $f_n$.
+\end{proof}
+
+\begin{theorem} \label{thm:even-one-root}
+  For each even integer $n \ge 2$,
+  $0$ is the only real root of $f_n$.
+ \end{theorem} 
+
+ \begin{proof}
+   Since $n - 1$ is positive and odd,
+   each real number has exactly one real $(n - 1)$th root,
+   and thus Equation~\eqref{eq:deriv-fn} shows that $0$ is the only real root of $f_n'$.
+   Therefore, it follows from Rolle's theorem that $0$ is the only real root of $f_n$.
+ \end{proof} 
+
+ It follows from Theorems \ref{thm:root-mult} and \ref{thm:even-one-root} that
+ inequality ${(1 + x)}^n > 1 + n x$ holds true for every real number $x \ne 0$ and every even integer $n \ge 2$.
+ 
+ \begin{theorem}
+   For each odd integer $n \ge 3$,
+   exactly one root of $f_n$ is both real and non-zero.
+ \end{theorem}
+
+ \begin{proof}
+   Since $n - 1$ is positive and even,
+   each positive real number has exactly two distinct real $(n - 1)$th roots,
+   and thus Equation~\eqref{eq:deriv-fn} shows that the real roots of $f_n'$ are $0$ and $- 2$.
+   Therefore, it follows from Rolle's theorem that
+   $f_n$ has no root in $\left[- 2, \infty \right[$
+   and that
+   at most one root of $f_n$ lies in $\left]- \infty, - 2 \right[$.
+   Since $f_n(-1) = n - 1 > 0$ and since $f_n(x)$ approaches $- \infty$ as $x$ approaches $- \infty$,
+   the intermediate value theorem ensures that at least one root of $f_n$ lies in $\left]- \infty, -1 \right]$.
+ \end{proof}
+
+
+
+
+ \begin{theorem}
+   For each odd integer $n \ge 3$,
+   the non-zero real root of $f_n$ is not greater than $- 2 - {(n - 2)}^{- 1}$.
+ \end{theorem}
+
+ \begin{proof}
+   It suffice to check that for each integer $n \ge 3$,
+    $f_n$ is non-negative on $\left[a_n, \infty \right[$,
+    where $a_n = - 2 - {(n - 2)}^{- 1}$.
+    Since $f_3(- 3) = 0$ the basis of our induction holds true.
+    Straightforward computations yield 
+    $$
+    f_{n + 2} (\ttx) = {(1 + \ttx)}^2 f_n(\ttx) + n \ttx^2 (\ttx - a_{n + 2}) 
+    $$
+   
+ \end{proof} 
+ 
+ 
+

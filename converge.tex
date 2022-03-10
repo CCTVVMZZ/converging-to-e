@@ -4,7 +4,7 @@
 
 
 
-\usepackage{hyperref,amsthm,amsmath,amsfonts,enumerate,stmaryrd}
+\usepackage{hyperref,amsthm,amsmath,amsfonts} %enumerate} %stmaryrd}
 
 \newcommand{\bN}{\mathbb{N}} %{\bZ_{\ge 0}}
 \newcommand{\Rnneg}{\left[0, \infty\right[} %{\bR_{\ge 0}}
@@ -152,7 +152,6 @@ for every $n \in \bN$.
 \end{proof}
 
 
-
 Lemma~\ref{lem:Bernoulli} states a special case of \emph{Bernoulli's inequality} \cite{MitrinovicAI}.
 
 \begin{lemma} \label{lem:convergence-to-e}
@@ -269,6 +268,8 @@ $\left( \left( 1 + n^{-1} \right)^n  \right)_{n \in \bN}$ converges to $e$ is ta
   Besides, we have $u_1 = 1 < \sqrt{2} = u_2$.
   Therefore, the desired result follows from Lemma~\ref{lem:root-vs-ratio}.
 \end{proof} 
+
+\include{bernoulli}
 
 \bibliographystyle{plain}
 \bibliography{converge}
