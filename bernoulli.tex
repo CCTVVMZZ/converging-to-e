@@ -45,6 +45,10 @@ Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \i
    It follows that $0$ is the only non-simple root of $f_n$.
 \end{proof}
 
+Theorem~\ref{thm:root-mult} ensures that for every real number $a$ and every integer $n \ge 2$,
+the graph of $f_n$ \emph{crosses} the $x$-axis at $x = a$ if, and only if, $a$ is a non-zero root of $f_n$
+(the graph of $f_n$ \emph{touches} the $x$-axis at $x = 0$ but does not cross it).
+
 \begin{theorem} \label{thm:even-one-root}
   For each even integer $n \ge 2$,
   $0$ is the only real root of $f_n$.
@@ -57,12 +61,13 @@ Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \i
    Therefore, it follows from Rolle's theorem that $0$ is the only real root of $f_n$.
  \end{proof} 
 
- It follows from Theorems \ref{thm:root-mult} and \ref{thm:even-one-root} that
- inequality ${(1 + x)}^n > 1 + n x$ holds true for every real number $x \ne 0$ and every even integer $n \ge 2$.
+ It follows from
+ Theorems \ref{thm:root-mult} and \ref{thm:even-one-root} 
+ that inequality ${(1 + x)}^n > 1 + n x$ holds true for every real number $x \ne 0$ and every even integer $n \ge 2$.
  
  \begin{theorem}
    For each odd integer $n \ge 3$,
-   exactly one root of $f_n$ is both real and non-zero.
+   exactly one root of $f_n$ is both real and non-zero and that root is less  than $- 2$.
  \end{theorem}
 
  \begin{proof}
@@ -73,9 +78,12 @@ Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \i
    $f_n$ has no root in $\left[- 2, \infty \right[$
    and that
    at most one root of $f_n$ lies in $\left]- \infty, - 2 \right[$.
-   Since $f_n(-1) = n - 1 > 0$ and since $f_n(x)$ approaches $- \infty$ as $x$ approaches $- \infty$,
-   the intermediate value theorem ensures that at least one root of $f_n$ lies in $\left]- \infty, -1 \right]$.
+   On the other hand, we have $f_n(-1) = n - 1 > 0$ and $f_n(x)$ approaches $- \infty$ as $x$ approaches $- \infty$,
+   so the intermediate value theorem ensures that at least one root of $f_n$ lies in $\left]- \infty, -1 \right]$.
  \end{proof}
+
+ Let $n \in \bN$.
+ It follows from  
 
 
 
