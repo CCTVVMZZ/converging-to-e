@@ -10,18 +10,11 @@ f_n(\ttx) = {(1 + \ttx)}^n - 1 - n \ttx
 $$
 for each $n \in \bN$.
 Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \in \bN$ and every $x \in [0, 1]$.
-% $$
-% t_3 =
-% - \frac{5}{3}
-% - \frac{\sqrt[3]{35 + 15 \sqrt{6}}}{3}
-% + \frac{5}{3 \sqrt[3]{35 + 15 \sqrt{6}}}
-% \approx -2.65062919143939
-% $$
 
-\begin{theorem} \label{thm:root-mult}
+\begin{lemma} \label{lem:root-mult}
   For each integer $n \ge 2$,
   $0$ is a double root of $f_n$ and $0$ is the only non-simple (complex) root of $f_n$.
-\end{theorem}
+\end{lemma}
 
 \begin{proof}
   Straightforward computations yield
@@ -43,50 +36,84 @@ Lemma~\ref{lem:Bernoulli} states that $f_n(- x)$ is non-negative for every $n \i
    $$
    so for every complex number $z$, $f_n(z) = f_n'(z) = 0$ implies $z = 0$.
    It follows that $0$ is the only non-simple root of $f_n$.
-\end{proof}
+ \end{proof}
 
-Theorem~\ref{thm:root-mult} ensures that for every real number $a$ and every integer $n \ge 2$,
-the graph of $f_n$ \emph{crosses} the $x$-axis at $x = a$ if, and only if, $a$ is a non-zero root of $f_n$
-(the graph of $f_n$ \emph{touches} the $x$-axis at $x = 0$ but does not cross it).
+ The following identities hold for every $n \in \bN$ and may be of interest to the reader:
+ $$
+ f_n (\ttx)
+ = \ttx^2 \sum_{k = 2}^n \binom{n}{k} \ttx^{k - 2}
+ = \ttx^2 \sum_{k = 1}^{n - 1}  \sum_{j = 0}^{k - 1} {(1 + \ttx)}^j \, .  
+ $$
 
-\begin{theorem} \label{thm:even-one-root}
+ % $$
+ % {(1 + \ttx)}^n - 1 = \ttx \sum_{k = 0}^{n - 1} {(1 + \ttx)}^k 
+ % $$
+
+\begin{lemma} \label{lem:even-one-root}
   For each even integer $n \ge 2$,
   $0$ is the only real root of $f_n$.
- \end{theorem} 
+ \end{lemma} 
 
  \begin{proof}
    Since $n - 1$ is positive and odd,
-   each real number has exactly one real $(n - 1)$th root,
+   $1$ is the only real $(n - 1)$th root of unity, 
    and thus Equation~\eqref{eq:deriv-fn} shows that $0$ is the only real root of $f_n'$.
-   Therefore, it follows from Rolle's theorem that $0$ is the only real root of $f_n$.
+Therefore, it follows from Rolle's theorem that $0$ is the only real root of $f_n$.
  \end{proof} 
 
- It follows from
- Theorems \ref{thm:root-mult} and \ref{thm:even-one-root} 
- that inequality ${(1 + x)}^n > 1 + n x$ holds true for every real number $x \ne 0$ and every even integer $n \ge 2$.
- 
- \begin{theorem}
+ \begin{lemma} \label{lem:odd-two-roots}   
    For each odd integer $n \ge 3$,
-   exactly one root of $f_n$ is both real and non-zero and that root is less  than $- 2$.
- \end{theorem}
+   exactly one root of $f_n$ is both real and non-zero and that root is less than $- 2$.
+ \end{lemma}
 
  \begin{proof}
    Since $n - 1$ is positive and even,
-   each positive real number has exactly two distinct real $(n - 1)$th roots,
-   and thus Equation~\eqref{eq:deriv-fn} shows that the real roots of $f_n'$ are $0$ and $- 2$.
+   $- 1$ and $1$ are the only real $(n - 1)$th roots of unity,
+   and thus Equation~\eqref{eq:deriv-fn} shows that $- 2$ and $0$ are the only the real roots of $f_n'$.
    Therefore, it follows from Rolle's theorem that
-   $f_n$ has no root in $\left[- 2, \infty \right[$
+   $f_n$ has no root in $\left[- 2, 0 \right[ \cup \left]0,  \infty \right[$
    and that
    at most one root of $f_n$ lies in $\left]- \infty, - 2 \right[$.
    On the other hand, we have $f_n(-1) = n - 1 > 0$ and $f_n(x)$ approaches $- \infty$ as $x$ approaches $- \infty$,
-   so the intermediate value theorem ensures that at least one root of $f_n$ lies in $\left]- \infty, -1 \right]$.
+   so the intermediate value theorem ensures that at least one root of $f_n$ lies in $\left]- \infty, -1 \right[$.
  \end{proof}
 
- Let $n \in \bN$.
- It follows from  
-
-
-
+ \begin{theorem}[Bernoulli's inequality] \label{thm:Bernoulli}
+   Let $n$ be an integer greater than $1$ and let $x$ be a non-zero real number.
+   If $n$ is even or if $x \ge - 2$ then $f_n(x)$ is positive.
+ \end{theorem}
+ 
+ \begin{proof}
+   %Let $n$ be a fixed integer greater than~$1$.
+   Put $I = \left[- 2, \infty \right[$.
+   It follows from Lemmas \ref{lem:even-one-root} and  \ref{lem:odd-two-roots}
+   that $0$ is the only root of $f_n$ that lies in~$I$.
+   Therefore, 
+   Besides, $I$ is an interval and Lemma~\ref{lem:root-mult} ensures that $0$ is a double root of $f_n$.
+   Therefore, $f_n$ does not change sign on $I \setminus \{ 0 \}$
+   (the graph of $f_n$ does \emph{not cross}  the $x$-axis at $x = 0$).
+   Since $f_n$ approaches $\infty$ as $x$ approaches $\infty$,
+   $f_n$ is positive on $I \setminus \{ 0 \}$.
+   It remains to prove that $f_n$ is positive on $\left]- \infty, - 2\right[$ if $n$ is even.
+   Assume that $n$ is even.
+   Lemmas~\ref{lem:even-one-root} ensures that $f_n$ does not change sign on
+ \end{proof}
+ 
+ \begin{proof}
+   First, Lemmas \ref{lem:even-one-root} and  \ref{lem:odd-two-roots} ensure that
+   $f_n$ has not root in  $\left]0, \infty \right[$.   
+   Besides, $f_n(t)$ approaches $\infty$ as $t$ approaches $\infty$.
+   Therefore, $f_n$ is positive on $\left]0, \infty \right[$.
+   Second, assume that $n$ is even.
+   Then, Lemma~\ref{lem:even-one-root} ensures that $f_n$ has no negative roots.
+   Besides,  $f_n(t)$ approaches $\infty$ as $t$ approaches $- \infty$.
+   Therefore, $f_n$ is positive on $\left]- \infty, 0 \right[$.
+   Third, assume that $n$ is odd.
+   Lemma~\ref{lem:even-one-root} ensures that $f_n$ has no root in $\left[- 2, 0 \right[$.
+   Besides, $f(- 1) = n - 1$ is positive.
+   Therefore, $f_n$ is positive on $\left]- \infty, 0 \right[$.
+ \end{proof}
+ 
 
  \begin{theorem}
    For each odd integer $n \ge 3$,
